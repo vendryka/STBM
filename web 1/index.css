@@ -1,0 +1,877 @@
+/* --- CSS Variables --- */
+:root {
+    --primary: #FF6B6B;
+    /* Vibrant Red-Orange */
+    --secondary: #4ECDC4;
+    /* Calming Teal */
+    --accent: #FFE66D;
+    /* Bright Yellow */
+    --light-bg: #F7FFF7;
+    /* Soft Off-White */
+    --dark-text: #1A535C;
+    /* Deep Blue-Green */
+    --gray-light: #ECEFF1;
+    /* Lighter Gray for subtle borders/backgrounds */
+    --gray-medium: #BDC3C7;
+    /* Medium Gray for subtle shadows */
+    --white: #FFFFFF;
+
+    --shadow-sm: rgba(0, 0, 0, 0.05);
+    --shadow-md: rgba(0, 0, 0, 0.1);
+    --shadow-lg: rgba(0, 0, 0, 0.15);
+
+    --spacing-xs: 0.5rem;
+    /* 8px */
+    --spacing-sm: 1rem;
+    /* 16px */
+    --spacing-md: 2rem;
+    /* 32px */
+    --spacing-lg: 3rem;
+    /* 48px */
+    --spacing-xl: 4rem;
+    /* 64px */
+    --spacing-xxl: 6rem;
+    /* 96px */
+
+    --border-radius-sm: 0.5rem;
+    --border-radius-md: 0.75rem;
+    --border-radius-lg: 1rem;
+    --border-radius-xl: 1.5rem;
+
+    --transition-duration: 0.4s;
+    /* Slightly longer for smoother feel */
+    --transition-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Custom ease */
+}
+
+/* --- Base Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Smooth scrolling for anchor links */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll due to animations */
+}
+
+/* --- Reusable Container --- */
+.container {
+    max-width: 1200px;
+    /* Even wider container */
+    margin: 0 auto;
+    padding: var(--spacing-md) var(--spacing-sm);
+}
+
+/* --- Header --- */
+header {
+    background: var(--primary);
+    padding: var(--spacing-sm) 0;
+    box-shadow: 0 4px 20px var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* === PENTING: Penyesuaian CSS untuk jarak yang cukup === */
+    padding-bottom: calc(var(--spacing-sm) + 0.5rem);
+    /* Menambah sedikit padding di bawah header */
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--spacing-sm);
+}
+
+header h1 {
+    color: var(--white);
+    font-weight: 800;
+    font-size: 2rem;
+    /* Larger */
+    letter-spacing: -0.04em;
+    /* Tighter letter spacing */
+    font-family: 'Playfair Display', serif;
+    /* Use a more elegant font for title */
+}
+
+/* --- Navigation --- */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-md);
+    /* More space between nav items */
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    /* Standard size */
+    transition: color var(--transition-duration), transform var(--transition-duration);
+    position: relative;
+    padding: var(--spacing-xs) 0;
+    letter-spacing: 0.02em;
+    /* Slightly open for readability */
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    /* More prominent underline */
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: calc(100% + 10px);
+    /* Wider underline */
+    height: 3px;
+    /* Thicker underline */
+    background-color: var(--accent);
+    /* Accent color for underline */
+    border-radius: 2px;
+    transition: transform var(--transition-duration) var(--transition-ease);
+}
+
+nav a:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+nav a:hover {
+    color: var(--accent);
+    /* Change to accent on hover */
+}
+
+/* --- Hero Section --- */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://source.unsplash.com/featured/?indonesian-community-women,empowerment,vibrant-culture') center/cover no-repeat;
+    height: 75vh;
+    /* Even taller hero */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-align: center;
+    padding: var(--spacing-md);
+    position: relative;
+    overflow: hidden;
+    /* For wave effect */
+}
+
+.hero::before {
+    /* Decorative wave effect */
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    /* Overlap slightly */
+    left: 0;
+    width: 100%;
+    height: 100px;
+    /* Height of the wave */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23F7FFF7" fill-opacity="1" d="M0,192L48,170.7C96,149,192,107,288,112C384,117,480,171,576,192C672,213,768,203,864,186.7C960,171,1056,149,1152,144C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center/cover;
+    z-index: 1;
+}
+
+
+.hero-content {
+    max-width: 900px;
+    /* Wider content area */
+    padding: var(--spacing-sm);
+    position: relative;
+    z-index: 2;
+    /* Above the wave */
+}
+
+.hero h2 {
+    /* === PENTING: Penyesuaian CSS untuk ukuran font yang pas === */
+    font-size: 2rem;
+    /* Ukuran font hero utama */
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow */
+    line-height: 1.1;
+    font-family: 'Playfair Display', serif;
+    /* Use Playfair for hero title */
+}
+
+.hero p {
+    font-size: 1.5rem;
+    /* Larger and more readable */
+    font-weight: 300;
+    opacity: 0.98;
+}
+
+/* --- General Section Styling --- */
+section {
+    margin-bottom: var(--spacing-xxl);
+    /* More space between sections */
+    background: var(--white);
+    border-radius: var(--border-radius-xl);
+    /* More rounded corners */
+    padding: var(--spacing-lg) var(--spacing-xl);
+    /* More horizontal padding */
+    box-shadow: 0 10px 35px var(--shadow-md);
+    /* Stronger initial shadow */
+    transition: box-shadow var(--transition-duration) var(--transition-ease);
+    position: relative;
+    /* For animations */
+
+    /* Fade-in on scroll */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s var(--transition-ease), transform 0.8s var(--transition-ease);
+}
+
+section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section:first-of-type {
+    margin-top: calc(-1 * var(--spacing-xxl));
+    /* Pull up significantly */
+    z-index: 2;
+    /* Ensure it overlaps hero wave */
+    box-shadow: 0 15px 40px var(--shadow-lg);
+    /* Stronger shadow for first section */
+    transform: translateY(0);
+    /* No initial transform for first section */
+    opacity: 1;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    /* Larger section titles */
+    color: var(--primary);
+    margin-bottom: var(--spacing-xl);
+    /* More space below title */
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: var(--spacing-xs);
+    letter-spacing: -0.02em;
+    font-family: 'Playfair Display', serif;
+    /* Use Playfair for section titles */
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    /* Wider underline */
+    height: 5px;
+    /* Thicker underline */
+    background-color: var(--secondary);
+    border-radius: 3px;
+}
+
+/* --- Info Blocks --- */
+.info-block {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--gray-light);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* Slightly stronger border */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    /* More visible inner shadow */
+}
+
+.info-block p {
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.05rem;
+    /* Slightly larger text */
+    color: var(--dark-text);
+}
+
+.info-block p strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* --- Key Personnel Specific Styling --- */
+.key-personnel {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: #EBF8F7;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--secondary);
+    box-shadow: 0 5px 15px var(--shadow-sm);
+    /* Slightly stronger shadow */
+}
+
+.key-personnel h3 {
+    color: var(--dark-text);
+    font-size: 1.4rem;
+    /* Larger heading */
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    /* Consistent font for sub-titles */
+}
+
+.key-personnel ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Adjusted grid for personnel */
+    gap: var(--spacing-sm) var(--spacing-md);
+}
+
+.key-personnel li {
+    margin-bottom: var(--spacing-xs);
+    font-size: 1rem;
+    /* Consistent text size */
+    color: var(--dark-text);
+}
+
+.key-personnel li strong {
+    font-weight: 500;
+    color: var(--secondary);
+}
+
+/* --- Card List (PKK, Posyandu, STBL) --- */
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    /* Slightly more space for better separation */
+}
+
+.card {
+    background: var(--white);
+    border-radius: var(--border-radius-xl);
+    /* More rounded corners for cards */
+    padding: var(--spacing-md);
+    box-shadow: 0 10px 25px var(--shadow-sm);
+    transition: transform var(--transition-duration) var(--transition-ease), box-shadow var(--transition-duration) var(--transition-ease);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    border-top: 5px solid var(--primary);
+    /* Special top border */
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    /* Even more significant lift */
+    box-shadow: 0 20px 40px var(--shadow-md);
+    /* Stronger shadow on hover */
+    border-top-color: var(--secondary);
+    /* Change border color on hover */
+}
+
+.card h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.5rem;
+    /* Larger card title */
+    font-family: 'Playfair Display', serif;
+    /* Consistent font */
+}
+
+.card p {
+    font-size: 1.05rem;
+    /* Slightly larger text */
+    line-height: 1.6;
+    color: var(--dark-text);
+}
+
+/* --- Gallery --- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Larger images */
+    gap: var(--spacing-md);
+}
+
+.gallery img {
+    width: 100%;
+    height: 220px;
+    /* Taller images */
+    object-fit: cover;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 6px 18px var(--shadow-sm);
+    transition: transform var(--transition-duration) var(--transition-ease), box-shadow var(--transition-duration) var(--transition-ease);
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    /* Slightly more zoom */
+    box-shadow: 0 10px 25px var(--shadow-md);
+}
+
+.gallery figure {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 6px 18px var(--shadow-sm);
+}
+
+.gallery figure img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-duration) var(--transition-ease);
+}
+
+.gallery figure:hover img {
+  transform: scale(1.05);
+}
+
+.gallery figure figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--white);
+  padding: var(--spacing-xs);
+  font-size: 1rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity var(--transition-duration) var(--transition-ease);
+}
+
+.gallery figure:hover figcaption {
+  opacity: 1;
+}
+
+
+/* --- About Section --- */
+.about {
+    line-height: 1.8;
+    /* More comfortable line height */
+    font-size: 1.1rem;
+    /* Larger text for readability */
+    padding: var(--spacing-lg) var(--spacing-xl);
+    text-align: justify;
+    /* Justify text for a formal look */
+}
+
+.about p {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* --- Contact Section --- */
+.contact form {
+    display: grid;
+    gap: var(--spacing-md);
+    /* More space between form elements */
+    max-width: 650px;
+    /* Wider form */
+    margin: 0 auto var(--spacing-md) auto;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 1.1rem;
+    /* More padding */
+    border: 1px solid var(--gray-medium);
+    border-radius: var(--border-radius-sm);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    color: var(--dark-text);
+    background-color: var(--white);
+    transition: border-color var(--transition-duration), box-shadow var(--transition-duration);
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    outline: none;
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 5px rgba(78, 205, 196, 0.3);
+    /* Stronger focus glow */
+}
+
+.contact button {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 1.1rem 2.5rem;
+    /* Larger button */
+    border-radius: var(--border-radius-sm);
+    font-weight: 700;
+    font-size: 1.25rem;
+    /* Larger font */
+    cursor: pointer;
+    transition: background var(--transition-duration), transform 0.2s ease-out, box-shadow var(--transition-duration);
+    box-shadow: 0 6px 20px var(--shadow-md);
+}
+
+.contact button:hover {
+    background: var(--secondary);
+    transform: translateY(-4px);
+    /* More noticeable lift on hover */
+    box-shadow: 0 10px 25px var(--shadow-lg);
+}
+
+.contact-info {
+    margin-top: var(--spacing-lg);
+    /* More space above contact info */
+    padding: var(--spacing-md);
+    background: var(--gray-light);
+    border-radius: var(--border-radius-md);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.contact-info p {
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.05rem;
+    color: var(--dark-text);
+}
+
+.contact-info p strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* --- Footer --- */
+footer {
+    background: var(--dark-text);
+    color: var(--light-bg);
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    /* More padding */
+    font-size: 0.9rem;
+    margin-top: var(--spacing-xxl);
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.15);
+    /* Stronger shadow */
+    position: relative;
+    z-index: 100;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .hero h2 {
+        font-size: 3rem;
+        /* Further reduce on smaller desktops/large tablets */
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    section {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav ul {
+        gap: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        height: 60vh;
+    }
+
+    .hero h2 {
+        font-size: 2.5rem;
+        /* Adjusted for tablets */
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    section h2 {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .card-list {
+        grid-template-columns: 1fr;
+        /* Stack cards vertically on small screens */
+    }
+
+    .key-personnel ul {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .gallery img {
+        height: 150px;
+    }
+
+    .contact form {
+        max-width: 100%;
+    }
+
+    .about {
+        text-align: left;
+        /* No justify on smaller screens for better word wrapping */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 50vh;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+        /* Adjusted for mobile phones */
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    section h2 {
+        font-size: 1.7rem;
+    }
+
+    .card h3 {
+        font-size: 1.3rem;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+    }
+
+    nav a {
+        font-size: 0.8rem;
+    }
+
+    section {
+        padding: var(--spacing-sm);
+    }
+
+    .card {
+        padding: var(--spacing-sm);
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+        /* Single column on very small screens */
+    }
+}
+
+
+.judul-bagan {
+  text-align: center;
+  color: #e74c3c;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.org-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.org-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.node {
+  border: 1px solid #ccc;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.node.red {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.node.orange {
+  background-color: #f39c12;
+  color: white;
+}
+
+.node.green {
+  background-color: #27ae60;
+  color: white;
+}
+
+.node.blue {
+  background-color: #3498db;
+  color: white;
+}
+
+.node.purple {
+  background-color: #9b59b6;
+  color: white;
+}
+
+.node.gray {
+  background-color: #95a5a6;
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .node {
+    min-width: 150px;
+    font-size: 12px;
+  }
+}
+
+.hero-carousel {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background-size: cover; 
+  background-repeat: no-repeat;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;     
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.caption {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  background: rgba(74, 74, 74, 0.5);
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+.caption h2 {
+  font-size: 1.5rem;
+  color: #d0d0d0;
+}
+
+.caption p {
+  font-size: 1.1rem;
+  color: #f0f0f0;
+}
+
+.kader-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.kader-grid ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* Untuk menu dropdown */
+nav ul li {
+  position: relative;
+}
+
+/* Dropdown submenu */
+nav ul li .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  min-width: 180px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  z-index: 100;
+}
+
+nav ul li .dropdown-menu li a {
+  padding: 10px 16px;
+  display: block;
+  color: #1A535C;
+  text-decoration: none;
+  font-weight: 500;
+  background-color: white;
+}
+
+nav ul li .dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Hover interaction */
+nav ul li.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.video-section {
+  padding: var(--spacing-lg) var(--spacing-md);
+  background-color: var(--white);
+  box-shadow: 0 8px 30px var(--shadow-sm);
+  border-radius: var(--border-radius-md);
+  margin-top: var(--spacing-lg);
+}
+
+.judul-video {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: var(--spacing-md);
+  font-family: 'Playfair Display', serif;
+}
